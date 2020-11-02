@@ -1,0 +1,61 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Toolkit;
+
+
+
+
+
+class Button_Image implements ActionListener
+{
+	static JFrame frame;
+        //Driver function
+	public static void main(String args[])
+	{
+		//Create a frame
+        frame=new JFrame("Image on Click");
+        JPanel panel = new JPanel();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = ((int) tk.getScreenSize().getWidth());
+        int ySize = ((int) tk.getScreenSize().getHeight());
+		frame.setSize(xSize,ySize);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.white);
+		frame.setLayout(new FlowLayout());
+		//Create a buttons
+		JButton button1 = new JButton("Add PC");
+        panel.add(button1);
+        JButton button2 = new JButton("Add Server");
+        panel.add(button2);
+        frame.add(panel);
+		//Create an object
+        Button_Image obj1=new Button_Image();
+        Button_Image obj2=new Button_Image();
+		//Associate ActionListener with button
+        button1.addActionListener(obj1);
+        button2.addActionListener(obj2);
+		//Display the frame
+        frame.setVisible(true);
+        
+
+	}
+        //Function to display image
+	public void actionPerformed(ActionEvent obj1) {
+		//Display Image
+		ImageIcon icon=new ImageIcon("PC_Icon.png");
+		JLabel label=new JLabel(icon);
+		frame.add(label);
+        frame.pack();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = ((int) tk.getScreenSize().getWidth());
+        int ySize = ((int) tk.getScreenSize().getHeight());
+		frame.setSize(xSize,ySize);
+    }
+
+    
+}
