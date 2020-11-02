@@ -1,0 +1,76 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.Toolkit;
+
+
+
+
+
+class Button_Image implements ActionListener
+{
+    private enum Actions {
+        PC,
+        SERVER
+    }
+	static JFrame frame;
+        //Driver function
+	public static void main(String args[])
+	{
+        Button_Image instance = new Button_Image();
+		//Create a frame
+        frame=new JFrame("Image on Click");
+        JPanel panel = new JPanel();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = ((int) tk.getScreenSize().getWidth());
+        int ySize = ((int) tk.getScreenSize().getHeight());
+		frame.setSize(xSize,ySize);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.white);
+		frame.setLayout(new FlowLayout());
+		//Create a buttons
+        JButton button1 = new JButton("Add PC");
+        button1.setActionCommand(Actions.PC.name());
+        button1.addActionListener(instance);
+        panel.add(button1);
+        JButton button2 = new JButton("Add Server");
+        button2.setActionCommand(Actions.SERVER.name());
+        button2.addActionListener(instance);
+        panel.add(button2);
+        frame.add(panel);
+		//Display the frame
+        frame.setVisible(true);
+        
+
+	}
+        //Function to display image
+	public void actionPerformed(ActionEvent e) {
+        //Display Image
+        if (e.getActionCommand() == Actions.PC.name()) {
+            ImageIcon icon=new ImageIcon("PC_Icon.png");
+            JLabel label=new JLabel(icon);
+            frame.add(label);
+            frame.pack();
+            Toolkit tk = Toolkit.getDefaultToolkit();
+            int xSize = ((int) tk.getScreenSize().getWidth());
+            int ySize = ((int) tk.getScreenSize().getHeight());
+            frame.setSize(xSize,ySize);
+        } 
+        else if (e.getActionCommand() == Actions.SERVER.name()) {
+            ImageIcon icon=new ImageIcon("Server_Icon.png");
+            JLabel label=new JLabel(icon);
+            frame.add(label);
+            frame.pack();
+            Toolkit tk = Toolkit.getDefaultToolkit();
+            int xSize = ((int) tk.getScreenSize().getWidth());
+            int ySize = ((int) tk.getScreenSize().getHeight());
+            frame.setSize(xSize,ySize);
+        }
+		
+    }
+}
